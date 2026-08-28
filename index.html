@@ -1,0 +1,532 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#fbf8f4" />
+    <meta
+      name="description"
+      content="Discover practical, in-person workshops across the Western Cape with Skillroom South Africa."
+    />
+    <meta
+      property="og:title"
+      content="Skillroom South Africa — Find. Learn. Build."
+    />
+    <meta
+      property="og:description"
+      content="Practical workshops, local makers and real skills."
+    />
+    <meta property="og:image" content="assets/og.png" />
+    <title>Skillroom South Africa — Find. Learn. Build.</title>
+    <link rel="stylesheet" href="styles.css?v=20260828-4" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#workshops">Skip to workshops</a>
+
+    <div class="site-shell" id="publicSite">
+      <header class="sidebar site-header">
+        <a class="brand" href="#" aria-label="Skillroom home">
+          <img
+            class="brand-logo"
+            src="assets/images/logo1.png"
+            alt=""
+            aria-hidden="true"
+          />
+          <span class="brand-name">SKILLROOM</span>
+          <span class="brand-place">SOUTH AFRICA</span>
+        </a>
+
+        <nav class="site-nav" id="siteNav" aria-label="Main navigation">
+          <a class="is-active" href="#workshops">Workshops</a>
+          <a href="about.html">About us</a>
+          <a href="how-we-work.html">How we work</a>
+          <a href="for-business.html">For business</a>
+          <a href="contact.html">Contact</a>
+        </nav>
+        <div class="nav-actions">
+          <button class="button button-outline" id="hostButton">
+            Host a Workshop
+          </button>
+          <button id="signInButton" hidden>Admin Sign In</button>
+          <button
+            class="icon-button"
+            id="menuButton"
+            aria-label="Open menu"
+            aria-expanded="false"
+          >
+            ☰
+          </button>
+        </div>
+      </header>
+
+      <main class="main-content">
+        <section class="topbar hero-banner" aria-labelledby="heroTitle">
+          <div class="headline-wrap">
+            <h1 id="heroTitle">
+              Real Skills.<br />Stronger People.<br /><span
+                >Brighter Communities.</span
+              >
+            </h1>
+            <p>
+              Hands-on workshops that give you practical skills, real experience
+              and new opportunities.
+            </p>
+            <div class="hero-benefits" aria-label="Skillroom benefits">
+              <span><b aria-hidden="true">▱</b>Learn<br />in person</span>
+              <span
+                ><b aria-hidden="true">♙</b>Practical<br />real-world
+                skills</span
+              >
+              <span><b aria-hidden="true">▥</b>Stronger<br />communities</span>
+            </div>
+          </div>
+          <div class="hero-image-wrap">
+            <img
+              src="assets/images/homepagebanner.png"
+              width="1718"
+              height="918"
+              fetchpriority="high"
+              alt="People developing practical electronics skills together in a workshop"
+            />
+            <div class="hero-note">
+              <strong>Skills today.</strong><span>Opportunities tomorrow.</span>
+            </div>
+          </div>
+        </section>
+
+        <section class="workshop-marketplace" aria-labelledby="workshopHeading">
+          <aside class="workshop-sidebar" aria-label="Workshop categories">
+            <button
+              class="category-button is-active"
+              data-category="All"
+              aria-pressed="true"
+            >
+              <span class="category-icon" aria-hidden="true">⊞</span
+              ><span>All workshops</span>
+            </button>
+            <button
+              class="category-button"
+              data-category="Technology"
+              aria-pressed="false"
+            >
+              <span class="category-icon" aria-hidden="true">&lt;/&gt;</span
+              ><span>Technology</span>
+            </button>
+            <button
+              class="category-button"
+              data-category="Craft"
+              aria-pressed="false"
+            >
+              <span class="category-icon" aria-hidden="true">◇</span
+              ><span>Craft</span>
+            </button>
+            <button
+              class="category-button"
+              data-category="Automotive"
+              aria-pressed="false"
+            >
+              <span class="category-icon" aria-hidden="true">▣</span
+              ><span>Automotive</span>
+            </button>
+          </aside>
+          <div class="workshop-results">
+            <section
+              class="discovery-toolbar"
+              aria-label="Workshop discovery tools"
+            >
+              <div>
+                <p class="eyebrow">Upcoming workshops</p>
+                <h2 id="workshopHeading">Popular Workshops</h2>
+              </div>
+              <label class="search-box"
+                ><span class="sr-only">Search workshops</span
+                ><span aria-hidden="true">⌕</span
+                ><input
+                  id="searchInput"
+                  type="search"
+                  placeholder="Search workshops or places"
+                  autocomplete="off"
+              /></label>
+            </section>
+            <p
+              class="results-note"
+              id="resultsNote"
+              role="status"
+              aria-live="polite"
+            ></p>
+            <section
+              class="workshop-grid"
+              id="workshops"
+              aria-labelledby="workshopHeading"
+            ></section>
+            <section class="empty-state" id="emptyState" hidden>
+              <span aria-hidden="true">✦</span>
+              <h3>More practical skills are on the way</h3>
+              <p>
+                There are no live workshops matching this filter yet. Try
+                another category or clear your search.
+              </p>
+              <button class="button button-orange" id="clearFiltersButton">
+                View all workshops
+              </button>
+            </section>
+          </div>
+        </section>
+
+        <section class="coming-soon" aria-labelledby="comingSoonTitle">
+          <div class="section-heading">
+            <div>
+              <p class="eyebrow">Worth watching</p>
+              <h2 id="comingSoonTitle">Coming Soon</h2>
+            </div>
+            <p>
+              New hands-on experiences, currently being shaped with local
+              experts.
+            </p>
+          </div>
+          <div class="teaser-grid">
+            <article class="teaser-card teaser-drone">
+              <span>Coming soon</span>
+              <h3>Build Your Own Drone</h3>
+              <p>Electronics, assembly and your first controlled flight.</p>
+              <button
+                class="text-button interest-button"
+                data-interest="Build Your Own Drone"
+              >
+                I’m interested →
+              </button>
+            </article>
+            <article class="teaser-card teaser-auto">
+              <span>Coming soon</span>
+              <h3>Automotive Diagnostics Basics</h3>
+              <p>Understand warning lights, OBD tools and common faults.</p>
+              <button
+                class="text-button interest-button"
+                data-interest="Automotive Diagnostics Basics"
+              >
+                I’m interested →
+              </button>
+            </article>
+          </div>
+        </section>
+
+        <footer class="site-footer">
+          <div class="footer-lead">
+            <img src="assets/images/logo1.png" alt="Skillroom South Africa" />
+            <p>
+              Practical learning that builds confident people and stronger local
+              communities.
+            </p>
+          </div>
+          <div class="footer-links">
+            <div>
+              <strong>Explore</strong><a href="#workshops">Workshops</a
+              ><a href="how-we-work.html">How we work</a
+              ><a href="for-business.html">For business</a>
+            </div>
+            <div>
+              <strong>Skillroom</strong><a href="about.html">About us</a
+              ><a href="contact.html">Contact</a
+              ><button type="button" id="footerHostButton">
+                Host a workshop
+              </button>
+            </div>
+            <div>
+              <strong>Contact</strong
+              ><a href="mailto:hello@skillroom.co.za">hello@skillroom.co.za</a
+              ><span>Western Cape, South Africa</span>
+            </div>
+          </div>
+          <div class="footer-bottom">
+            <span>© 2026 Skillroom South Africa</span
+            ><span>Learn locally. Build confidently.</span>
+          </div>
+        </footer>
+      </main>
+    </div>
+
+    <section
+      class="admin-view"
+      id="adminView"
+      hidden
+      aria-labelledby="adminHeading"
+    >
+      <header class="admin-topbar">
+        <a class="admin-brand" href="#"><span>SR</span> Skillroom Admin</a>
+        <div>
+          <span class="admin-user">admin@skillroom.co.za</span>
+          <button class="button button-outline" id="viewSiteButton">
+            View website
+          </button>
+          <button class="button button-teal" id="signOutButton">
+            Sign out
+          </button>
+        </div>
+      </header>
+      <main class="admin-main">
+        <div class="admin-welcome">
+          <div>
+            <p class="eyebrow">Friday, 28 August 2026</p>
+            <h1 id="adminHeading">Good afternoon, Admin.</h1>
+            <p>Here’s what’s happening across Skillroom.</p>
+          </div>
+          <button class="button button-orange" id="addWorkshopButton">
+            + Add workshop
+          </button>
+        </div>
+        <section class="stat-grid" aria-label="Platform overview">
+          <article>
+            <span>Upcoming workshops</span><strong>8</strong
+            ><small>2 this weekend</small>
+          </article>
+          <article>
+            <span>Seats sold</span><strong>47</strong
+            ><small>68% of available seats</small>
+          </article>
+          <article>
+            <span>Revenue</span><strong>R26,850</strong
+            ><small>Confirmed bookings</small>
+          </article>
+          <article>
+            <span>Needs attention</span><strong class="orange-text">2</strong
+            ><small>Minimum not reached</small>
+          </article>
+        </section>
+        <section class="admin-panel">
+          <div class="admin-panel-heading">
+            <div>
+              <p class="eyebrow">Workshop management</p>
+              <h2>Upcoming workshops</h2>
+            </div>
+            <button class="text-button" id="manageCategoriesButton">
+              Manage categories →
+            </button>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Workshop</th>
+                  <th>Next session</th>
+                  <th>Bookings</th>
+                  <th>Status</th>
+                  <th><span class="sr-only">Actions</span></th>
+                </tr>
+              </thead>
+              <tbody id="adminWorkshopRows"></tbody>
+            </table>
+          </div>
+        </section>
+        <section class="admin-lower-grid">
+          <article class="admin-panel attention-panel">
+            <p class="eyebrow">Attention</p>
+            <h2>Close to minimum attendance</h2>
+            <div class="attention-item">
+              <span
+                ><strong>Pottery for Beginners</strong
+                ><small>3 of 5 needed to confirm</small></span
+              ><b>2 days left</b>
+            </div>
+            <div class="progress"><span style="width: 60%"></span></div>
+          </article>
+          <article class="admin-panel quick-panel">
+            <p class="eyebrow">Quick actions</p>
+            <h2>Keep the marketplace fresh</h2>
+            <div>
+              <button id="featureButton">☆ Choose featured workshops</button
+              ><button id="enquiryButton">✉ Review host enquiries</button
+              ><button id="exportButton">⇩ Export attendee list</button>
+            </div>
+          </article>
+        </section>
+      </main>
+    </section>
+
+    <div class="modal-backdrop" id="modalBackdrop" hidden></div>
+
+    <section
+      class="modal"
+      id="workshopModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modalWorkshopTitle"
+      hidden
+    >
+      <button
+        class="modal-close"
+        data-close-modal
+        aria-label="Close workshop details"
+      >
+        ×
+      </button>
+      <img id="modalWorkshopImage" alt="" />
+      <div class="modal-body">
+        <span class="stamp" id="modalWorkshopCategory"></span>
+        <p class="eyebrow" id="modalWorkshopAvailability"></p>
+        <h2 id="modalWorkshopTitle"></h2>
+        <p class="modal-intro" id="modalWorkshopDescription"></p>
+        <dl class="workshop-facts">
+          <div>
+            <dt>Date &amp; time</dt>
+            <dd id="modalWorkshopDate"></dd>
+          </div>
+          <div>
+            <dt>Location</dt>
+            <dd id="modalWorkshopLocation"></dd>
+          </div>
+          <div>
+            <dt>Hosted by</dt>
+            <dd id="modalWorkshopHost"></dd>
+          </div>
+          <div>
+            <dt>Price</dt>
+            <dd id="modalWorkshopPrice"></dd>
+          </div>
+        </dl>
+        <div class="trust-note">
+          ✓ Light lunch included &nbsp; ✓ Full refund if the workshop does not
+          run
+        </div>
+        <button class="button button-orange button-full" id="reserveButton">
+          Reserve Your Spot
+        </button>
+      </div>
+    </section>
+
+    <section
+      class="modal modal-small"
+      id="loginModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="loginTitle"
+      hidden
+    >
+      <button class="modal-close" data-close-modal aria-label="Close sign in">
+        ×
+      </button>
+      <div class="modal-body">
+        <span class="modal-logo">SR</span>
+        <p class="eyebrow">Private area</p>
+        <h2 id="loginTitle">Admin sign in</h2>
+        <p class="modal-intro">
+          Manage workshops, bookings and homepage content.
+        </p>
+        <form id="loginForm" novalidate>
+          <label
+            >Email address<input
+              id="emailInput"
+              type="email"
+              autocomplete="username"
+              required
+              value="admin@skillroom.co.za"
+          /></label>
+          <label
+            >Password<input
+              id="passwordInput"
+              type="password"
+              autocomplete="current-password"
+              required
+              value="Skillroom123"
+          /></label>
+          <p class="form-error" id="loginError" role="alert"></p>
+          <button class="button button-teal button-full" type="submit">
+            Sign in securely
+          </button>
+        </form>
+        <div class="demo-note">
+          <strong>Demo login</strong><span>admin@skillroom.co.za</span
+          ><span>Skillroom123</span
+          ><small
+            >This static prototype uses a browser-only demo login. Production
+            authentication must be server-side.</small
+          >
+        </div>
+      </div>
+    </section>
+
+    <section
+      class="modal modal-small"
+      id="hostModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="hostTitle"
+      hidden
+    >
+      <button
+        class="modal-close"
+        data-close-modal
+        aria-label="Close host enquiry"
+      >
+        ×
+      </button>
+      <div class="modal-body">
+        <p class="eyebrow">Share what you know</p>
+        <h2 id="hostTitle">Host a practical workshop</h2>
+        <p class="modal-intro">
+          Tell us what you teach. The Skillroom team manages listings during
+          Phase 1.
+        </p>
+        <form id="hostForm">
+          <label>Your name<input type="text" required /></label>
+          <label>Email address<input type="email" required /></label>
+          <label
+            >Workshop idea<textarea
+              rows="4"
+              required
+              placeholder="What will people make, learn or be able to do?"
+            ></textarea>
+          </label>
+          <button class="button button-orange button-full" type="submit">
+            Send enquiry
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <section
+      class="modal modal-small"
+      id="adminActionModal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="adminActionTitle"
+      hidden
+    >
+      <button class="modal-close" data-close-modal aria-label="Close form">
+        ×
+      </button>
+      <div class="modal-body">
+        <p class="eyebrow">Draft workshop</p>
+        <h2 id="adminActionTitle">Add a workshop</h2>
+        <p class="modal-intro">
+          This first prototype demonstrates the basic admin workflow. Entries
+          are saved to this browser only.
+        </p>
+        <form id="addWorkshopForm">
+          <label
+            >Workshop title<input id="newWorkshopTitle" type="text" required
+          /></label>
+          <label
+            >Category<select id="newWorkshopCategory">
+              <option>Technology</option>
+              <option>Craft</option>
+              <option>Automotive</option>
+            </select></label
+          >
+          <label
+            >Price (R)<input
+              id="newWorkshopPrice"
+              type="number"
+              min="0"
+              required
+          /></label>
+          <button class="button button-orange button-full" type="submit">
+            Save draft
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+  </body>
+</html>
