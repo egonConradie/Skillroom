@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Admin Sign In | SkillRoom South Africa</title>
+    <link rel="stylesheet" href="/styles.css?v=20260828-4" />
+  </head>
+  <body>
+    <main class="main-content">
+      <section class="simple-hero">
+        <div>
+          <a class="brand" href="/" aria-label="Back to SkillRoom home">
+            <img
+              class="brand-logo"
+              src="assets/images/logo1.png"
+              alt=""
+              aria-hidden="true"
+            />
+            <span class="brand-name">SKILLROOM</span>
+            <span class="brand-place">SOUTH AFRICA</span>
+          </a>
+
+          <p class="eyebrow">Admin area</p>
+          <h1>Sign in to manage courses.</h1>
+
+          <div class="simple-copy">
+            <p>
+              This page is the login interface only. The secure server-side
+              login check will be added in the next step.
+            </p>
+          </div>
+        </div>
+
+        <div class="contact-card">
+          <form class="contact-form" action="/admin/login" method="post">
+            <label>
+              Email address
+              <input
+                type="email"
+                name="email"
+                autocomplete="username"
+                required
+              />
+            </label>
+
+            <label>
+              Password
+              <input
+                type="password"
+                name="password"
+                autocomplete="current-password"
+                required
+              />
+            </label>
+
+            <p id="loginMessage" aria-live="polite"></p>
+
+            <button class="button button-orange" type="submit">Sign in</button>
+
+            <a class="text-button" href="/">Back to public website</a>
+          </form>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

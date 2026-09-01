@@ -1,26 +1,17 @@
-// Load Node.js's built-in path module.
-// Benefit: It helps us create safe file paths that work on Windows, Mac, and Linux.
-const path = require("path");
+require("dotenv").config();
 
-// Load Express, a helper framework for building servers with Node.js.
-// Benefit: Express makes routes easier to write and understand.
+const path = require("path");
+const bcrypt = require("bcryptjs");
 const express = require("express");
 
-// Create the Express application.
-// This app receives browser requests and sends responses.
 const app = express();
-
-// Choose the port where our local server will run.
-// 3000 is commonly used for local backend development.
 const PORT = 3000;
 
-// Tell Express to serve normal website files from this project folder.
-// Benefit: index.html, styles.css, app.js, and assets can load through Node.js.
+// Let Express read submitted HTML form data and serve the existing website files.
+app.use(express.urlencoded({ extended: false }));
 app.use(express.static(__dirname));
 
-// Create a simple backend test route.
-// When the browser visits http://localhost:3000/api/health,
-// the server sends back a small JSON response.
+// Test route to confirm the backend is running.
 app.get("/api/health", (request, response) => {
   response.json({
     status: "ok",
@@ -28,13 +19,37 @@ app.get("/api/health", (request, response) => {
   });
 });
 
-// Send index.html when someone visits the homepage.
-// Benefit: http://localhost:3000 will show your existing SkillRoom homepage.
+// Show the existing SkillRoom homepage.
 app.get("/", (request, response) => {
   response.sendFile(path.join(__dirname, "index.html"));
 });
 
-// Start the Express server.
+// Show the admin login page.
+app.get("/admin/login", (request, response) => {
+  response.sendFile(path.join(__dirname, "admin-login.html"));
+});
+
+// Check submitted admin login details against private .env settings.
+app.post("/admin/login", (request, response) => {
+  const email = request.body.email;
+  const password = request.body.password;
+
+  const emailMatches = email === process.env.ADMIN_EMAIL;
+  const passwordMatches = bcrypt.compareSync(
+    password,
+    process.env.ADMIN_PASSWORD_HASH,
+  );
+
+  if (!emailMatches || !passwordMatches) {
+    return response.status(401).send("Invalid admin login details.");
+  }
+
+  response.send(
+    "Admin login successful. Dashboard protection will be added next.",
+  );
+});
+
+// Start the local development server.
 app.listen(PORT, () => {
   console.log(`Server running at http://localhost:${PORT}`);
 });

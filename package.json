@@ -19,6 +19,8 @@
   },
   "homepage": "https://github.com/egonConradie/Skillroom#readme",
   "dependencies": {
+    "bcryptjs": "3.0.3",
+    "dotenv": "17.4.2",
     "express": "5.2.1"
   }
 }
