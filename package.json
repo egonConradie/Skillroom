@@ -1,0 +1,24 @@
+{
+  "name": "skillroom-website-reloaded",
+  "version": "1.0.0",
+  "description": "This package contains a responsive Skillroom workshop marketplace and a basic admin login/dashboard built with plain HTML, CSS and JavaScript.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/egonConradie/Skillroom.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/egonConradie/Skillroom/issues"
+  },
+  "homepage": "https://github.com/egonConradie/Skillroom#readme",
+  "dependencies": {
+    "express": "5.2.1"
+  }
+}
