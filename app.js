@@ -3,6 +3,7 @@ let loadError = false;
 let saved = [];
 try { saved = JSON.parse(localStorage.getItem("skillroomSaved") || "[]"); } catch {}
 const state = {category:"All",search:"",saved:new Set(Array.isArray(saved)?saved.map(String):[]),activeModal:null,lastFocused:null};
+let activeCourse=null;
 const grid=document.querySelector("#workshops");
 const resultsNote=document.querySelector("#resultsNote");
 const emptyState=document.querySelector("#emptyState");
@@ -81,6 +82,7 @@ function closeModal(restore=true) {
 function openWorkshop(id,trigger) {
   const course=workshops.find(item=>String(item.id)===String(id));
   if(!course) return;
+  activeCourse=course;
   document.querySelector("#modalWorkshopImage").src=CourseUI.image(course.image);
   document.querySelector("#modalWorkshopImage").alt=course.title+" workshop";
   const category=document.querySelector("#modalWorkshopCategory");
@@ -127,8 +129,19 @@ document.querySelector("#menuButton").addEventListener("click",event=>{
   const open=document.querySelector(".sidebar").classList.toggle("is-open");
   event.currentTarget.setAttribute("aria-expanded",String(open));
 });
-document.querySelector("#reserveButton").addEventListener("click",()=>showToast("To book, contact hello@skillroom.co.za. Online booking is not yet available."));
-document.querySelector("#hostForm").addEventListener("submit",event=>{event.preventDefault();showToast("Please send your workshop idea to hello@skillroom.co.za. This form is not yet connected.");});
+document.querySelector("#reserveButton").addEventListener("click",()=>{
+  if(!activeCourse) return;
+  const subject=encodeURIComponent("Workshop booking: "+activeCourse.title);
+  const body=encodeURIComponent("Hello Skillroom,\n\nI would like to book "+activeCourse.title+" in "+activeCourse.location+" on "+CourseUI.date(activeCourse)+".\n\nMy name:\nNumber of places:\nContact number:\n");
+  window.location.href="mailto:hello@skillroom.co.za?subject="+subject+"&body="+body;
+});
+document.querySelector("#hostForm").addEventListener("submit",event=>{
+  event.preventDefault();
+  const fields=event.currentTarget.querySelectorAll("input,textarea");
+  const subject=encodeURIComponent("Workshop host enquiry");
+  const body=encodeURIComponent("Name: "+fields[0].value+"\nEmail: "+fields[1].value+"\n\nWorkshop idea:\n"+fields[2].value);
+  window.location.href="mailto:hello@skillroom.co.za?subject="+subject+"&body="+body;
+});
 document.addEventListener("keydown",event=>{
   if(event.key==="Escape") closeModal();
   if(event.key==="Tab"&&state.activeModal) {
