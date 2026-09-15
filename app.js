@@ -73,10 +73,7 @@ function openWorkshop(id,trigger) {
   for(const [name,items] of Object.entries({Needs:sections.needs,Includes:sections.includes,Breakdown:sections.breakdown})) {
     const list=document.querySelector("#modalWorkshop"+name); list.innerHTML=items.map(item=>`<li>${CourseUI.escape(item)}</li>`).join("");
   }
-  if(trigger && trigger.classList) {
-    trigger.classList.add("is-opening");
-    window.setTimeout(()=>{trigger.classList.remove("is-opening");openModal("workshopModal",trigger);},120);
-  } else openModal("workshopModal",trigger);
+  openModal("workshopModal",trigger);
 }
 function showToast(message) {
   const toast=document.querySelector("#toast"); toast.textContent=message; toast.hidden=false;

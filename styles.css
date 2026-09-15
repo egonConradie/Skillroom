@@ -1049,6 +1049,17 @@ body { background: #f7f9f9; color: #173142; }
 .modal-breakdown ol { counter-reset: course-step; }
 .modal-breakdown li { counter-increment: course-step; display: grid; grid-template-columns: 23px 1fr; align-items: start; gap: 7px; }
 .modal-breakdown li::before { content: counter(course-step); display: grid; place-items: center; width: 22px; height: 22px; border-radius: 50%; background: #e4f5f6; color: #087687; font-size: 11px; font-weight: 900; }
+.workshop-card:active { transform: none; }
+#workshopModal.modal:not([hidden]) { animation: workshop-modal-in 420ms cubic-bezier(.22,.8,.24,1) both; }
+#workshopModal.modal:not([hidden]) > img { animation: workshop-image-in 650ms cubic-bezier(.22,.8,.24,1) both; }
+@keyframes workshop-modal-in {
+  from { opacity: 0; transform: scale(1.012); filter: blur(2px); }
+  to { opacity: 1; transform: none; filter: blur(0); }
+}
+@keyframes workshop-image-in {
+  from { opacity: .72; transform: scale(1.035); }
+  to { opacity: 1; transform: scale(1); }
+}
 @media (max-width: 760px) {
   .card-body { min-height: 0; }
   .modal-detail-grid { grid-template-columns: 1fr; }
