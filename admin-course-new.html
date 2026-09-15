@@ -1,0 +1,35 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Course editor | SkillRoom</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/admin.css"><script src="/course-ui.js" defer></script><script src="/admin.js" defer></script></head><body><div class="site-shell course-studio" data-page="editor"><header class="site-header sidebar">
+<a class="brand" href="/admin/dashboard" aria-label="SkillRoom course manager"><img class="brand-logo" src="/assets/images/logo1.png" alt=""><span class="brand-name">SKILLROOM</span><span class="brand-place">SOUTH AFRICA</span></a>
+<nav class="site-nav" aria-label="Admin navigation"><a class="is-active" href="/admin/dashboard">Your courses</a><a href="/">View website ↗</a></nav>
+<div class="nav-actions"><span class="admin-label">COURSE STUDIO</span><button class="button button-outline" id="logoutButton" type="button">Sign out</button></div></header>
+<main class="studio-main editor-main"><a class="studio-back" href="/admin/dashboard">← Back to your courses</a>
+<div class="editor-heading"><div><p class="eyebrow">Make something people want to learn</p><h1 id="editorTitle">Create a new course.</h1><p>Bring your workshop to life, one detail at a time.</p></div><span id="editorStatus" class="publish-badge">New draft</span></div>
+<p id="pageMessage" class="studio-message" role="alert" hidden></p>
+<div class="editor-layout"><form id="courseForm" class="course-form">
+<fieldset class="form-panel"><legend><span>01</span> The first impression</legend><p class="field-hint">Choose a clear, inviting image of what people will make or learn.</p>
+<div class="image-picker"><label for="imageFile" class="upload-label"><span aria-hidden="true">↑</span><strong>Choose a course image</strong><small>PNG, JPEG or WebP · up to 4 MB</small></label><input id="imageFile" type="file" accept="image/png,image/jpeg,image/webp"><p id="uploadStatus" class="field-hint" role="status"></p></div>
+<label>Or use an image link<input id="image" name="image" maxlength="2048" placeholder="https://… or /assets/images/robotics.jpg"><small class="field-hint">You can also choose one of your existing site images.</small></label>
+<div class="image-presets" aria-label="Existing course images">
+<button type="button" data-image="/assets/images/robotics.jpg" aria-label="Use robotics image"><img src="/assets/images/robotics.jpg" alt=""></button>
+<button type="button" data-image="/assets/images/web-development.jpg" aria-label="Use web development image"><img src="/assets/images/web-development.jpg" alt=""></button>
+<button type="button" data-image="/assets/images/printing.jpg" aria-label="Use 3D printing image"><img src="/assets/images/printing.jpg" alt=""></button>
+<button type="button" data-image="/assets/images/pottery.jpg" aria-label="Use pottery image"><img src="/assets/images/pottery.jpg" alt=""></button></div>
+<label>Course title <span class="field-required">Required</span><input id="title" name="title" required maxlength="120" placeholder="e.g. Build your first Arduino robot"></label>
+<label>Category<select id="category" name="category"><option>Technology</option><option>Craft</option><option>Automotive</option></select></label>
+</fieldset>
+<fieldset class="form-panel"><legend><span>02</span> Tell the story</legend>
+<label>Short introduction<textarea id="shortDescription" name="shortDescription" rows="3" maxlength="240" placeholder="A quick, inspiring introduction to the workshop."></textarea><small class="field-hint">Up to 240 characters. Required to publish.</small></label>
+<label>Full course information<textarea id="fullDescription" name="fullDescription" rows="7" maxlength="8000" placeholder="What will people learn? What will they make? Who is it for? Include what to bring and what is included."></textarea></label>
+</fieldset>
+<fieldset class="form-panel"><legend><span>03</span> The practical details</legend>
+<div class="field-pair"><label>Price per person (R)<input id="price" name="price" type="number" min="0" max="1000000" step="0.01" value="0" required><small class="field-hint">Use 0 for a free workshop.</small></label><label>Date &amp; time<input id="startsAt" name="startsAt" type="datetime-local"><small class="field-hint">South African time (SAST).</small></label></div>
+<label>Location / venue<input id="location" name="location" maxlength="180" placeholder="e.g. Maker Studio, 12 Main Road, Cape Town"></label>
+<div class="field-pair"><label>Host name<input id="host" name="host" maxlength="100" placeholder="Who is leading the workshop?"></label><label>Availability label<input id="availability" name="availability" maxlength="60" placeholder="e.g. 8 spots left"><small class="field-hint">Optional; update this yourself as places fill.</small></label></div>
+</fieldset>
+<fieldset class="form-panel publish-panel"><legend><span>04</span> Ready when you are</legend>
+<label class="publish-choice"><input id="published" name="published" type="checkbox"><span><strong>Publish on the website</strong><small>Published courses appear for everyone. Leave this off to save a private draft.</small></span></label>
+<div class="editor-actions"><button id="saveButton" class="button button-teal" type="submit">Save draft</button><a class="text-button" href="/admin/dashboard">Cancel</a><button id="deleteButton" class="delete-button" type="button" hidden>Delete course</button></div>
+<p id="saveMessage" role="status" class="save-message"></p></fieldset>
+</form>
+<aside class="preview-panel" aria-label="Course preview"><div class="preview-sticky"><p class="eyebrow">Through your learners’ eyes</p><h2>Your live preview</h2><p class="field-hint">The same card design your visitors see.</p><div id="coursePreview"></div><div class="preview-story"><p class="eyebrow">About this workshop</p><p id="previewDescription">Your introduction will appear here as you write.</p></div><p class="preview-note"><span aria-hidden="true">✦</span> Clear details build confidence. A great image sparks curiosity.</p></div></aside>
+</div></main></div></body></html>

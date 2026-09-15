@@ -19,6 +19,7 @@
     <meta property="og:image" content="assets/og.png" />
     <title>Skillroom South Africa — Find. Learn. Build.</title>
     <link rel="stylesheet" href="styles.css?v=20260828-4" />
+    <script src="/course-ui.js" defer></script>
     <script src="app.js" defer></script>
   </head>
   <body>
@@ -48,7 +49,6 @@
           <button class="button button-outline" id="hostButton">
             Host a Workshop
           </button>
-          <button id="signInButton" hidden>Admin Sign In</button>
           <button
             class="icon-button"
             id="menuButton"
@@ -230,7 +230,7 @@
               ><a href="contact.html">Contact</a
               ><button type="button" id="footerHostButton">
                 Host a workshop
-              </button>
+              </button><a class="admin-sign-in-link" id="signInButton" href="/admin/login">Staff access</a>
             </div>
             <div>
               <strong>Contact</strong
@@ -245,103 +245,6 @@
         </footer>
       </main>
     </div>
-
-    <section
-      class="admin-view"
-      id="adminView"
-      hidden
-      aria-labelledby="adminHeading"
-    >
-      <header class="admin-topbar">
-        <a class="admin-brand" href="#"><span>SR</span> Skillroom Admin</a>
-        <div>
-          <span class="admin-user">admin@skillroom.co.za</span>
-          <button class="button button-outline" id="viewSiteButton">
-            View website
-          </button>
-          <button class="button button-teal" id="signOutButton">
-            Sign out
-          </button>
-        </div>
-      </header>
-      <main class="admin-main">
-        <div class="admin-welcome">
-          <div>
-            <p class="eyebrow">Friday, 28 August 2026</p>
-            <h1 id="adminHeading">Good afternoon, Admin.</h1>
-            <p>Here’s what’s happening across Skillroom.</p>
-          </div>
-          <button class="button button-orange" id="addWorkshopButton">
-            + Add workshop
-          </button>
-        </div>
-        <section class="stat-grid" aria-label="Platform overview">
-          <article>
-            <span>Upcoming workshops</span><strong>8</strong
-            ><small>2 this weekend</small>
-          </article>
-          <article>
-            <span>Seats sold</span><strong>47</strong
-            ><small>68% of available seats</small>
-          </article>
-          <article>
-            <span>Revenue</span><strong>R26,850</strong
-            ><small>Confirmed bookings</small>
-          </article>
-          <article>
-            <span>Needs attention</span><strong class="orange-text">2</strong
-            ><small>Minimum not reached</small>
-          </article>
-        </section>
-        <section class="admin-panel">
-          <div class="admin-panel-heading">
-            <div>
-              <p class="eyebrow">Workshop management</p>
-              <h2>Upcoming workshops</h2>
-            </div>
-            <button class="text-button" id="manageCategoriesButton">
-              Manage categories →
-            </button>
-          </div>
-          <div class="table-wrap">
-            <table>
-              <thead>
-                <tr>
-                  <th>Workshop</th>
-                  <th>Next session</th>
-                  <th>Bookings</th>
-                  <th>Status</th>
-                  <th><span class="sr-only">Actions</span></th>
-                </tr>
-              </thead>
-              <tbody id="adminWorkshopRows"></tbody>
-            </table>
-          </div>
-        </section>
-        <section class="admin-lower-grid">
-          <article class="admin-panel attention-panel">
-            <p class="eyebrow">Attention</p>
-            <h2>Close to minimum attendance</h2>
-            <div class="attention-item">
-              <span
-                ><strong>Pottery for Beginners</strong
-                ><small>3 of 5 needed to confirm</small></span
-              ><b>2 days left</b>
-            </div>
-            <div class="progress"><span style="width: 60%"></span></div>
-          </article>
-          <article class="admin-panel quick-panel">
-            <p class="eyebrow">Quick actions</p>
-            <h2>Keep the marketplace fresh</h2>
-            <div>
-              <button id="featureButton">☆ Choose featured workshops</button
-              ><button id="enquiryButton">✉ Review host enquiries</button
-              ><button id="exportButton">⇩ Export attendee list</button>
-            </div>
-          </article>
-        </section>
-      </main>
-    </section>
 
     <div class="modal-backdrop" id="modalBackdrop" hidden></div>
 
@@ -384,64 +287,10 @@
             <dd id="modalWorkshopPrice"></dd>
           </div>
         </dl>
-        <div class="trust-note">
-          ✓ Light lunch included &nbsp; ✓ Full refund if the workshop does not
-          run
-        </div>
+        <div class="trust-note">Contact the host to confirm what is included and the cancellation terms.</div>
         <button class="button button-orange button-full" id="reserveButton">
           Reserve Your Spot
         </button>
-      </div>
-    </section>
-
-    <section
-      class="modal modal-small"
-      id="loginModal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="loginTitle"
-      hidden
-    >
-      <button class="modal-close" data-close-modal aria-label="Close sign in">
-        ×
-      </button>
-      <div class="modal-body">
-        <span class="modal-logo">SR</span>
-        <p class="eyebrow">Private area</p>
-        <h2 id="loginTitle">Admin sign in</h2>
-        <p class="modal-intro">
-          Manage workshops, bookings and homepage content.
-        </p>
-        <form id="loginForm" novalidate>
-          <label
-            >Email address<input
-              id="emailInput"
-              type="email"
-              autocomplete="username"
-              required
-              value="admin@skillroom.co.za"
-          /></label>
-          <label
-            >Password<input
-              id="passwordInput"
-              type="password"
-              autocomplete="current-password"
-              required
-              value="Skillroom123"
-          /></label>
-          <p class="form-error" id="loginError" role="alert"></p>
-          <button class="button button-teal button-full" type="submit">
-            Sign in securely
-          </button>
-        </form>
-        <div class="demo-note">
-          <strong>Demo login</strong><span>admin@skillroom.co.za</span
-          ><span>Skillroom123</span
-          ><small
-            >This static prototype uses a browser-only demo login. Production
-            authentication must be server-side.</small
-          >
-        </div>
       </div>
     </section>
 
@@ -479,49 +328,6 @@
           </label>
           <button class="button button-orange button-full" type="submit">
             Send enquiry
-          </button>
-        </form>
-      </div>
-    </section>
-
-    <section
-      class="modal modal-small"
-      id="adminActionModal"
-      role="dialog"
-      aria-modal="true"
-      aria-labelledby="adminActionTitle"
-      hidden
-    >
-      <button class="modal-close" data-close-modal aria-label="Close form">
-        ×
-      </button>
-      <div class="modal-body">
-        <p class="eyebrow">Draft workshop</p>
-        <h2 id="adminActionTitle">Add a workshop</h2>
-        <p class="modal-intro">
-          This first prototype demonstrates the basic admin workflow. Entries
-          are saved to this browser only.
-        </p>
-        <form id="addWorkshopForm">
-          <label
-            >Workshop title<input id="newWorkshopTitle" type="text" required
-          /></label>
-          <label
-            >Category<select id="newWorkshopCategory">
-              <option>Technology</option>
-              <option>Craft</option>
-              <option>Automotive</option>
-            </select></label
-          >
-          <label
-            >Price (R)<input
-              id="newWorkshopPrice"
-              type="number"
-              min="0"
-              required
-          /></label>
-          <button class="button button-orange button-full" type="submit">
-            Save draft
           </button>
         </form>
       </div>

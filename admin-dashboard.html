@@ -1,0 +1,19 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Your courses | SkillRoom</title><link rel="stylesheet" href="/styles.css"><link rel="stylesheet" href="/admin.css"><script src="/course-ui.js" defer></script><script src="/admin.js" defer></script></head><body><div class="site-shell course-studio" data-page="dashboard"><header class="site-header sidebar">
+<a class="brand" href="/admin/dashboard" aria-label="SkillRoom course manager"><img class="brand-logo" src="/assets/images/logo1.png" alt=""><span class="brand-name">SKILLROOM</span><span class="brand-place">SOUTH AFRICA</span></a>
+<nav class="site-nav" aria-label="Admin navigation"><a class="is-active" href="/admin/dashboard">Your courses</a><a href="/">View website ↗</a></nav>
+<div class="nav-actions"><span class="admin-label">COURSE STUDIO</span><button class="button button-outline" id="logoutButton" type="button">Sign out</button></div></header>
+<main class="studio-main">
+<section class="studio-intro"><div><p class="eyebrow">A brighter tomorrow starts here</p><h1>Your skills. <span>Their next chapter.</span></h1><p>Create a workshop worth showing up for. Manage it just as your learners see it.</p></div><a class="button button-teal" href="/admin/courses/new">+ Add course</a></section>
+<section class="workshop-marketplace studio-marketplace" aria-label="Manage your courses">
+<aside class="workshop-sidebar" aria-label="Course categories">
+<button class="category-button is-active" data-category="All" aria-pressed="true"><span class="category-icon" aria-hidden="true">⊞</span>All workshops</button>
+<button class="category-button" data-category="Technology" aria-pressed="false"><span class="category-icon" aria-hidden="true">&lt;/&gt;</span>Technology</button>
+<button class="category-button" data-category="Craft" aria-pressed="false"><span class="category-icon" aria-hidden="true">◇</span>Craft</button>
+<button class="category-button" data-category="Automotive" aria-pressed="false"><span class="category-icon" aria-hidden="true">▣</span>Automotive</button>
+</aside>
+<div class="workshop-results"><section class="discovery-toolbar"><div><p class="eyebrow">Your workshop collection</p><h2>Made to make a difference.</h2></div><label class="search-box"><span class="sr-only">Search your courses</span><span aria-hidden="true">⌕</span><input id="adminSearch" type="search" placeholder="Search courses or places"></label></section>
+<div class="studio-filter-row"><p class="results-note" id="courseCount" role="status">Loading your courses…</p><label class="status-filter">Show <select id="statusFilter"><option value="all">All courses</option><option value="published">Published</option><option value="draft">Drafts</option></select></label></div>
+<p id="pageMessage" class="studio-message" role="alert" hidden></p><button id="retryButton" class="button button-outline" hidden>Try again</button>
+<div class="workshop-grid" id="adminCourseGrid" aria-live="polite"></div></div></section>
+<p class="studio-signoff">Real skills. Stronger people. <span>Brighter communities.</span></p>
+</main></div></body></html>

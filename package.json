@@ -4,7 +4,8 @@
   "description": "This package contains a responsive Skillroom workshop marketplace and a basic admin login/dashboard built with plain HTML, CSS and JavaScript.",
   "main": "app.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "test": "node --test tests/server.test.js"
   },
   "repository": {
     "type": "git",
@@ -21,6 +22,7 @@
   "dependencies": {
     "bcryptjs": "3.0.3",
     "dotenv": "17.4.2",
-    "express": "5.2.1"
+    "express": "5.2.1",
+    "express-session": "1.19.0"
   }
 }
