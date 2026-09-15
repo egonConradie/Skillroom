@@ -14,6 +14,18 @@ window.CourseUI = (() => {
     const value=new Date(course.startsAt+":00+02:00");
     return Number.isFinite(value.getTime()) ? new Intl.DateTimeFormat("en-ZA",{dateStyle:"medium",timeStyle:"short",timeZone:"Africa/Johannesburg"}).format(value) : "Date to be announced";
   }
+  function list(value, fallback) {
+    const values = Array.isArray(value) ? value : String(value || "").split(/[\n,|]/).map(item=>item.trim()).filter(Boolean);
+    return values.length ? values.slice(0,6) : fallback;
+  }
+  function details(course) {
+    const technology = course.category === "Technology";
+    return {
+      needs: list(course.whatYouNeed || course.needs, technology ? ["No previous experience", "A curious, hands-on mindset", "Comfortable clothes"] : ["No previous experience", "A curious, creative mindset", "Comfortable clothes"]),
+      includes: list(course.whatsIncluded || course.included, technology ? ["All tools and materials", "Guided practical instruction", "Take-home project"] : ["All tools and materials", "Guided practical instruction", "Take-home piece"]),
+      breakdown: list(course.courseBreakdown || course.breakdown, technology ? ["Welcome and fundamentals", "Guided build session", "Test, troubleshoot and take home"] : ["Materials and technique demo", "Guided making session", "Finish, share and take home"])
+    };
+  }
   function card(course, {admin=false,preview=false,saved=false}={}) {
     const id=escape(course.id);
     const title=escape(course.title || "Your course title");
@@ -29,11 +41,13 @@ window.CourseUI = (() => {
       </div>
       <div class="card-body">
         <h3>${title}</h3>
-        <div class="host-line"><span class="host-avatar">${escape(initials)}</span><span>By ${escape(host)}</span></div>
+        <div class="host-line"><span class="host-avatar">${escape(initials)}</span><span><small>Hosted by</small><strong>${escape(host)}</strong></span></div>
+        <p class="card-summary">${escape(course.shortDescription || course.description || "A practical, welcoming workshop built around doing.")}</p>
         <div class="card-meta">
           <span><b aria-hidden="true">▣</b>${escape(date(course))}</span>
           <span class="card-bottom"><span><b aria-hidden="true">⌖</b>${escape(course.location||"Your location")}</span><strong class="price">${escape(money(course.price))}</strong></span>
         </div>
+        ${!admin&&!preview ? `<div class="card-discover">Explore workshop <span aria-hidden="true">↗</span></div>` : ""}
         ${admin ? `<div class="admin-card-foot"><span class="publish-badge ${course.published?"is-published":""}">${course.published?"Published":"Draft"}</span><span>Edit course ↗</span></div>` : ""}
       </div>`;
     if(admin) return `<a class="workshop-card admin-course-card" href="/admin/courses/${encodeURIComponent(course.id)}/edit" aria-label="Edit ${title}">${inner}</a>`;
@@ -42,5 +56,5 @@ window.CourseUI = (() => {
   document.addEventListener("error", event=>{
     if(event.target instanceof HTMLImageElement && event.target.getAttribute("src")!=="/assets/images/robotics.jpg") event.target.src="/assets/images/robotics.jpg";
   },true);
-  return {escape,money,image,date,card};
+  return {escape,money,image,date,details,card};
 })();

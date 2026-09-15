@@ -69,7 +69,14 @@ function openWorkshop(id,trigger) {
   category.textContent=course.category; category.className="stamp "+(course.category==="Craft"?"craft":"");
   for(const [key,value] of Object.entries({Availability:course.availability||"",Title:course.title,Description:course.fullDescription||course.description||course.shortDescription,Date:CourseUI.date(course),Location:course.location,Host:course.host,Price:CourseUI.money(course.price)+" per person"}))
     document.querySelector("#modalWorkshop"+key).textContent=value;
-  openModal("workshopModal",trigger);
+  const sections=CourseUI.details(course);
+  for(const [name,items] of Object.entries({Needs:sections.needs,Includes:sections.includes,Breakdown:sections.breakdown})) {
+    const list=document.querySelector("#modalWorkshop"+name); list.innerHTML=items.map(item=>`<li>${CourseUI.escape(item)}</li>`).join("");
+  }
+  if(trigger && trigger.classList) {
+    trigger.classList.add("is-opening");
+    window.setTimeout(()=>{trigger.classList.remove("is-opening");openModal("workshopModal",trigger);},120);
+  } else openModal("workshopModal",trigger);
 }
 function showToast(message) {
   const toast=document.querySelector("#toast"); toast.textContent=message; toast.hidden=false;
