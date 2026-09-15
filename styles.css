@@ -959,6 +959,70 @@ body { background: #f7f9f9; color: #173142; }
   .hero-benefits b::before { width: 27px; height: 27px; }
   .workshop-marketplace::before { left: -10px; right: -10px; }
 }
+
+/* Full-screen workshop experience */
+#workshopModal.modal {
+  inset: 0;
+  left: 0;
+  top: 0;
+  transform: none;
+  width: 100vw;
+  max-width: none;
+  height: 100dvh;
+  max-height: none;
+  border-radius: 0;
+  overflow: hidden;
+  grid-template-columns: minmax(0, 1.08fr) minmax(420px, .92fr);
+  background: #f9fcfd;
+}
+#workshopModal.modal > img {
+  height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  background: #dcecf0;
+}
+#workshopModal .modal-body {
+  overflow-y: auto;
+  padding: clamp(42px, 7vw, 104px) clamp(28px, 6vw, 92px) 42px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  background: radial-gradient(circle at 100% 0, rgba(197,238,241,.65), transparent 42%), #fbfdfd;
+}
+#workshopModal .modal-close {
+  top: 24px;
+  right: 26px;
+  width: 48px;
+  height: 48px;
+  background: rgba(255,255,255,.86);
+  color: #12364b;
+  font-size: 30px;
+  box-shadow: 0 10px 28px rgba(8,48,67,.16);
+}
+#workshopModal .modal-close:hover { transform: rotate(4deg) scale(1.04); background: white; }
+.modal-kicker { display: flex; align-items: center; gap: 10px; margin-bottom: 18px; color: #17728a; font-size: 11px; font-weight: 850; letter-spacing: .16em; text-transform: uppercase; }
+.modal-kicker-line { width: 32px; height: 2px; border-radius: 2px; background: var(--orange); }
+#workshopModal .modal .stamp { width: fit-content; }
+#workshopModal .modal-body h2 { max-width: 650px; font-size: clamp(34px, 4vw, 64px); line-height: .99; color: #10344d; margin: 4px 0 18px; }
+#workshopModal .modal-intro { max-width: 650px; color: #526b7c; font-size: clamp(16px, 1.5vw, 19px); line-height: 1.65; }
+.modal-section-label { margin: 6px 0 10px; color: #78909a; font-size: 11px; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+#workshopModal .workshop-facts { max-width: 650px; grid-template-columns: repeat(2, minmax(0,1fr)); gap: 10px; margin: 0 0 22px; }
+#workshopModal .workshop-facts div { min-height: 72px; padding: 15px 17px; border: 1px solid #dcebee; border-radius: 14px; background: rgba(255,255,255,.82); box-shadow: 0 7px 18px rgba(16,74,93,.045); }
+#workshopModal .workshop-facts dd { color: #173b53; font-size: 14px; line-height: 1.35; }
+#workshopModal .trust-note { max-width: 650px; border: 1px solid #cce7eb; background: #effafb; color: #176378; line-height: 1.5; }
+.modal-actions { max-width: 650px; display: grid; gap: 12px; }
+.modal-actions .button { min-height: 54px; justify-content: center; font-size: 15px; }
+.modal-actions .button span { margin-left: auto; font-size: 21px; }
+.modal-back-link { justify-self: center; border: 0; background: transparent; color: #397185; font-size: 13px; font-weight: 750; cursor: pointer; padding: 6px 12px; }
+.modal-back-link:hover { color: var(--orange); }
+@media (max-width: 760px) {
+  #workshopModal.modal { display: block; overflow-y: auto; }
+  #workshopModal.modal > img { display: block; width: 100%; height: 34vh; min-height: 230px; }
+  #workshopModal .modal-body { min-height: 66vh; padding: 34px 22px 34px; display: block; }
+  #workshopModal .modal-close { top: 16px; right: 16px; }
+  #workshopModal .modal-body h2 { font-size: clamp(34px, 10vw, 50px); }
+  #workshopModal .workshop-facts { grid-template-columns: 1fr; }
+}
 @media (hover: none) {
   .save-button { opacity: 1; transform: none; }
 }

@@ -265,10 +265,12 @@
       </button>
       <img id="modalWorkshopImage" alt="" />
       <div class="modal-body">
+        <div class="modal-kicker"><span class="modal-kicker-line"></span><span>Workshop experience</span></div>
         <span class="stamp" id="modalWorkshopCategory"></span>
         <p class="eyebrow" id="modalWorkshopAvailability"></p>
         <h2 id="modalWorkshopTitle"></h2>
         <p class="modal-intro" id="modalWorkshopDescription"></p>
+        <p class="modal-section-label">Everything you need to know</p>
         <dl class="workshop-facts">
           <div>
             <dt>Date &amp; time</dt>
@@ -288,9 +290,10 @@
           </div>
         </dl>
         <div class="trust-note">Contact the host to confirm what is included and the cancellation terms.</div>
-        <button class="button button-orange button-full" id="reserveButton">
-          Reserve Your Spot
-        </button>
+        <div class="modal-actions">
+          <button class="button button-orange button-full" id="reserveButton">Reserve Your Spot <span aria-hidden="true">→</span></button>
+          <button class="modal-back-link" data-close-modal type="button">← Back to all workshops</button>
+        </div>
       </div>
     </section>
 
