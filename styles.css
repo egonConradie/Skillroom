@@ -1066,6 +1066,10 @@ body { background: #f7f9f9; color: #173142; }
 }
 
 /* Gallery, customer journey and team workshops */
+.workshops-page .experience-section,
+.workshops-page .journey-section,
+.workshops-page .business-section,
+.workshops-page .coming-soon { display: none; }
 .experience-section, .journey-section, .business-section { margin-top: clamp(76px, 9vw, 132px); }
 .experience-heading { align-items: end; margin-bottom: 34px; }
 .experience-heading > p { max-width: 430px; }

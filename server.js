@@ -208,7 +208,7 @@ function createApp(options = {}) {
   app.use("/uploads",express.static(uploadsDir,{dotfiles:"deny",index:false}));
   for(const name of ["styles.css","app.js","course-ui.js","admin.css","admin.js","admin-login.js"]) app.get("/"+name,sendPage(name));
   app.get("/",sendPage("index.html"));
-  for(const name of ["index.html","about.html","how-we-work.html","for-business.html","contact.html"]) app.get("/"+name,sendPage(name));
+  for(const name of ["index.html","gallery.html","about.html","how-we-work.html","for-business.html","contact.html"]) app.get("/"+name,sendPage(name));
   app.use((req,res)=>res.status(404).send("Page not found."));
   app.use((error,req,res,next)=>{
     const status=error.status || 500;
