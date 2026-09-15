@@ -13,7 +13,7 @@
 .studio-intro h1 span { color:#ee4a27; }
 .studio-intro p:not(.eyebrow),.editor-heading p:not(.eyebrow) { color:#60758a; margin:0; font-size:14px; }
 .course-studio .button { display:inline-flex; justify-content:center; align-items:center; text-decoration:none; }
-.course-studio .button-teal { background:linear-gradient(130deg,#087d94,#045570); box-shadow:0 7px 16px #075c721c; color:white; }
+.course-studio .button-teal { background:#076477; box-shadow:none; color:white; }
 .studio-marketplace { margin-top:0; }
 .studio-filter-row { display:flex; align-items:center; justify-content:space-between; gap:14px; margin:7px 0 15px; }
 .status-filter { display:flex; align-items:center; gap:8px; color:#60758a; font-size:12px; }
@@ -37,7 +37,7 @@
 .editor-heading { display:flex; align-items:center; justify-content:space-between; gap:24px; margin-bottom:34px; }
 .editor-layout { display:grid; grid-template-columns:minmax(0,1.55fr) minmax(270px,.8fr); gap:40px; align-items:start; }
 .course-form { display:grid; gap:25px; }
-.form-panel { min-width:0; padding:25px; border:1px solid #e0eaf0; border-radius:15px; background:#fff; box-shadow:0 8px 26px #154b6605; margin:0; }
+.form-panel { min-width:0; padding:25px; border:1px solid #cbd7d3; border-radius:4px; background:#fcfdfb; box-shadow:none; margin:0; }
 .form-panel legend { padding:0 9px; font-size:16px; font-weight:700; color:#143b50; }
 .form-panel legend>span { font-size:11px; color:#00839b; margin-right:8px; }
 .course-form label { display:block; font-size:13px; font-weight:650; color:#254a60; margin-bottom:19px; }
@@ -86,7 +86,7 @@
 .login-story h1 span { color:#ff4b23; }
 .login-story>p:not(.eyebrow) { color:#6a8190; line-height:1.7; max-width:360px; }
 .login-brand { align-items:flex-start; margin-bottom:45px; }
-.login-panel { padding:36px; border:1px solid #dfeaf0; border-radius:20px; background:white; box-shadow:0 20px 65px #165e7710; }
+.login-panel { padding:36px; border:1px solid #cbd7d3; border-radius:4px; background:#fcfdfb; box-shadow:none; }
 .login-panel h2 { font:700 25px/1.2 Arial,sans-serif; letter-spacing:-.035em; color:#183f55; margin:0; }
 .login-panel>p:not(.eyebrow) { color:#6c8291; font-size:13px; margin:14px 0 25px; }
 .login-panel .course-form { gap:15px; }
