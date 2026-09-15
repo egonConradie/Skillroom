@@ -8,6 +8,7 @@ const resultsNote=document.querySelector("#resultsNote");
 const emptyState=document.querySelector("#emptyState");
 const backdrop=document.querySelector("#modalBackdrop");
 const focusableSelector='button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])';
+const workshopCacheKey="skillroomPublicWorkshopsV1";
 function renderWorkshops() {
   if(loadError) return;
   const query=state.search.trim().toLowerCase();
@@ -23,21 +24,38 @@ async function loadWorkshops() {
   grid.setAttribute("aria-busy","true");
   emptyState.hidden=true;
   try {
-    const response=await fetch("/api/courses");
-    if(!response.ok) throw new Error();
-    const data=await response.json();
-    if(!Array.isArray(data)) throw new Error();
+    let data;
+    for(let attempt=0;attempt<2;attempt++) {
+      try {
+        const response=await fetch("/api/courses",{cache:"no-store",headers:{Accept:"application/json"}});
+        if(!response.ok) throw new Error("Workshop request failed");
+        data=await response.json();
+        if(!Array.isArray(data)) throw new Error("Invalid workshop response");
+        break;
+      } catch(error) {
+        if(attempt) throw error;
+        await new Promise(resolve=>setTimeout(resolve,300));
+      }
+    }
     workshops=data;
+    try { localStorage.setItem(workshopCacheKey,JSON.stringify(data)); } catch {}
     emptyState.querySelector("h3").textContent="More practical skills are on the way";
     emptyState.querySelector("p").textContent="There are no live workshops matching this filter yet. Try another category or clear your search.";
     document.querySelector("#clearFiltersButton").textContent="View all workshops";
     renderWorkshops();
   } catch {
-    loadError=true; grid.hidden=true; emptyState.hidden=false;
-    resultsNote.textContent="Workshops are temporarily unavailable.";
-    emptyState.querySelector("h3").textContent="We couldn't load the workshops";
-    emptyState.querySelector("p").textContent="Please check your connection and try again.";
-    document.querySelector("#clearFiltersButton").textContent="Try again";
+    let cached=[];
+    try { cached=JSON.parse(localStorage.getItem(workshopCacheKey)||"[]"); } catch {}
+    if(Array.isArray(cached)&&cached.length) {
+      workshops=cached; loadError=false; renderWorkshops();
+      resultsNote.textContent=cached.length+" workshops shown · saved copy";
+    } else {
+      loadError=true; grid.hidden=true; emptyState.hidden=false;
+      resultsNote.textContent="Workshops are temporarily unavailable.";
+      emptyState.querySelector("h3").textContent="We couldn't load the workshops";
+      emptyState.querySelector("p").textContent="Please check your connection and try again.";
+      document.querySelector("#clearFiltersButton").textContent="Try again";
+    }
   } finally {grid.removeAttribute("aria-busy");}
 }
 function setCategory(category) {
@@ -120,4 +138,5 @@ document.addEventListener("keydown",event=>{
     if(!event.shiftKey&&document.activeElement===last) {event.preventDefault();first?.focus();}
   }
 });
+window.addEventListener("online",()=>loadWorkshops());
 loadWorkshops();

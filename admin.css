@@ -22,15 +22,15 @@
 .admin-card-foot { display:flex; justify-content:space-between; align-items:center; gap:6px; margin-top:15px; padding-top:12px; border-top:1px solid #e7eff4; color:#52768a; font-size:10px; }
 .publish-badge { display:inline-flex; align-items:center; border:1px solid #e4dcca; border-radius:30px; background:#faf4e9; padding:5px 9px; font:650 10px/1.2 "Segoe UI",sans-serif; color:#7d612a; white-space:nowrap; }
 .publish-badge.is-published { border-color:#c8e6dd; background:#edf9f3; color:#286b53; }
-.add-course-card { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:275px; padding:24px 16px; text-align:center; text-decoration:none; border:1.5px dashed #a5cbd9; border-radius:13px; background:linear-gradient(145deg,#fff,#e9f5fa); color:#607f91; transition:border-color .2s,box-shadow .2s; }
-.add-course-card:hover { border-color:#087c95; box-shadow:0 12px 24px #0e6b8312; }
-.add-course-icon { display:grid; place-items:center; width:52px; height:52px; border-radius:16px; background:#dff0f6; color:#007690; font-size:33px; font-weight:300; margin-bottom:20px; }
+.add-course-card { display:flex; flex-direction:column; justify-content:center; align-items:center; min-height:275px; padding:24px 16px; text-align:center; text-decoration:none; border:1px dashed #91afb5; border-radius:4px; background:#f2f6f3; color:#607f91; transition:border-color .2s; }
+.add-course-card:hover { border-color:#087c95; box-shadow:none; }
+.add-course-icon { display:grid; place-items:center; width:52px; height:52px; border-radius:3px; background:#dfeae6; color:#007690; font-size:33px; font-weight:300; margin-bottom:20px; }
 .add-course-card strong { font-size:16px; color:#123c52; margin-bottom:8px; }
 .add-course-card>span:not(.add-course-icon) { font-size:12px; line-height:1.6; }
 .add-course-link { color:#08738c; margin-top:23px; font-weight:700; }
 .studio-signoff { margin-top:40px; color:#6b8391; font-size:12px; }
 .studio-signoff span { color:#d34e30; }
-.studio-message { border:1px solid #f4c9bd; border-radius:10px; background:#fff2ed; color:#97391f; padding:14px 17px; font-size:14px; }
+.studio-message { border:1px solid #e2b7aa; border-radius:3px; background:#f8ebe5; color:#97391f; padding:14px 17px; font-size:14px; }
 .studio-back { display:inline-block; color:#40697d; text-decoration:none; font-size:13px; margin-bottom:28px; }
 .studio-back:hover { color:#00768a; }
 .editor-main { max-width:1320px; }
@@ -48,7 +48,7 @@
 .field-hint { display:block; font-size:12px; color:#678090; line-height:1.6; font-weight:400; margin:7px 0 0; }
 .field-required { float:right; font-size:10px; color:#7d8c95; font-weight:400; }
 .field-pair { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:18px; }
-.image-picker { border:1px dashed #b8d6e2; border-radius:12px; background:linear-gradient(130deg,#f5fbfe,#eef8fa); padding:20px; margin:18px 0 22px; }
+.image-picker { border:1px dashed #9fbcc1; border-radius:3px; background:#eef4f1; padding:20px; margin:18px 0 22px; }
 .course-form .upload-label { text-align:center; cursor:pointer; margin:0 0 14px; display:grid; gap:4px; }
 .upload-label>span { font-size:25px; color:#00859d; }
 .upload-label small { color:#6b8797; font-weight:400; }

@@ -31,6 +31,11 @@ test('Course manager: authentication, permissions, CRUD, uploads and persistence
   }
   t.after(async()=>{await new Promise(resolve=>server.close(resolve));fs.rmSync(directory,{recursive:true,force:true});});
   await t.test('private routes and files are protected',async()=>{
+    for(const url of ['/','/gallery.html','/how-we-work.html','/for-business.html','/contact.html']) {
+      const page=await request(url);
+      assert.equal(page.status,200,url);
+      assert.match(page.headers.get('content-security-policy'),/default-src 'self'/);
+    }
     assert.equal((await request('/api/admin/courses')).status,401);
     assert.equal((await request('/admin/dashboard')).status,302);
     assert.equal((await request('/admin-dashboard.html')).status,302);

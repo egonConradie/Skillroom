@@ -84,6 +84,9 @@ function createApp(options = {}) {
     res.setHeader("X-Content-Type-Options","nosniff");
     res.setHeader("Referrer-Policy","strict-origin-when-cross-origin");
     res.setHeader("X-Frame-Options","DENY");
+    res.setHeader("Permissions-Policy","camera=(), microphone=(), geolocation=()");
+    res.setHeader("Content-Security-Policy","default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self' https: data:; connect-src 'self'; font-src 'self'; object-src 'none'; base-uri 'self'; frame-ancestors 'none'; form-action 'self' mailto:");
+    if(production) res.setHeader("Strict-Transport-Security","max-age=31536000; includeSubDomains");
     next();
   });
   app.use(express.json({limit:"6mb"}));
@@ -108,7 +111,11 @@ function createApp(options = {}) {
       return res.status(403).json({error:"Your session changed. Reload the page and try again."});
     next();
   }
-  const sendPage = name => (req,res)=>res.sendFile(path.join(__dirname,name));
+  const sendPage = name => (req,res)=>{
+    if(!res.hasHeader("Cache-Control"))
+      res.setHeader("Cache-Control",name.endsWith(".html")?"no-cache":"public, max-age=0, must-revalidate");
+    res.sendFile(path.join(__dirname,name));
+  };
   app.get("/api/health", (req,res)=>res.json({status:"ok",courseManager:true}));
   app.get("/admin/login", (req,res)=>{
     res.setHeader("Cache-Control","no-store");
