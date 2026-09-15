@@ -36,7 +36,7 @@ window.CourseUI = (() => {
       <div class="card-image">
         <img src="${escape(image(course.image))}" alt="${title} workshop" loading="lazy" />
         ${!admin&&!preview ? `<button class="save-button ${saved?"is-saved":""}" data-save="${id}" aria-label="${saved?"Remove":"Save"} ${title}" aria-pressed="${saved}">${saved?"♥":"♡"}</button>` : ""}
-        <span class="stamp ${craft?"craft":""}">${escape(course.category==="Technology"?"Tech":course.category||"Tech")}</span>
+        <span class="stamp ${craft?"craft":""}">${escape(course.subcategory || (course.category==="Technology"?"Tech":course.category||"Tech"))}</span>
         ${course.availability ? `<span class="availability ${course.status==="almost"?"almost":""}">${escape(course.availability)}</span>` : ""}
       </div>
       <div class="card-body">
